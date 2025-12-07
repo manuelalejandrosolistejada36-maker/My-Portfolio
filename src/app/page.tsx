@@ -39,7 +39,7 @@ export const projects = [
     title: "The Stylo Cave",
     description:
       "La barbería The Stylo Cave es un espacio dedicado al cuidado y estilo masculino, ofreciendo servicios de corte de cabello, afeitado tradicional y tratamientos de belleza en un ambiente moderno y acogedor.",
-    link: "https://thestylocave.vercel.app/",
+    link: "https://thestylocave.vercel.app",
     image: "/image/the-stylo-cave.png",
   },
   {
