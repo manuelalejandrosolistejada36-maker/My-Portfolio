@@ -71,8 +71,7 @@ export const Navbar = ({ children, className }: NavbarProps) => {
   return (
     <motion.div
       ref={ref}
-      // IMPORTANT: Change this to class of `fixed` if you want the navbar to be fixed
-      className={cn("sticky inset-x-0 top-20 z-40 w-full", className)}
+      className={cn("fixed inset-x-0 top-0 z-40 w-full", className)}
     >
       {React.Children.map(children, (child) => {
         // No pasar `visible` a elementos HTML nativos (div, span, etc.)
@@ -93,7 +92,7 @@ export const NavBody = ({ children, className, visible }: NavBodyProps) => {
   return (
     <motion.div
       animate={{
-        backdropFilter: visible ? "blur(10px)" : "none",
+        backdropFilter: visible ? "blur(15px) saturate(180%)" : "none",
         boxShadow: visible
           ? "0 0 24px rgba(34, 42, 53, 0.06), 0 1px 1px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(34, 42, 53, 0.04), 0 0 4px rgba(34, 42, 53, 0.08), 0 16px 68px rgba(47, 48, 55, 0.05), 0 1px 0 rgba(255, 255, 255, 0.1) inset"
           : "none",
@@ -107,10 +106,16 @@ export const NavBody = ({ children, className, visible }: NavBodyProps) => {
       }}
       style={{
         minWidth: "800px",
+        background: visible 
+          ? "rgba(0, 0, 0, 0.5)" 
+          : "rgba(0, 0, 0, 1)",
+        border: visible 
+          ? "1px solid rgba(255, 255, 255, 0.12)" 
+          : "none",
+        WebkitBackdropFilter: visible ? "blur(15px) saturate(180%)" : "none",
       }}
       className={cn(
-        "relative z-[60] mx-auto hidden w-full max-w-7xl flex-row items-center justify-between self-start rounded-full px-4 py-2 lg:flex",
-        visible ? "bg-white/90" : "bg-black",
+        "relative z-60 mx-auto hidden w-full max-w-7xl flex-row items-center justify-between self-start rounded-full px-4 py-2 lg:flex",
         className,
       )}
     >
@@ -137,7 +142,7 @@ export const NavItems = ({ items, className, onItemClick, visible }: NavItemsPro
       onMouseLeave={() => setHovered(null)}
       className={cn(
         "absolute inset-0 hidden flex-1 flex-row items-center justify-center space-x-2 text-sm font-medium transition duration-200 lg:flex lg:space-x-2",
-        visible ? "text-zinc-600 hover:text-zinc-800" : "text-white hover:text-neutral-300",
+        visible ? "text-white hover:text-gray-200" : "text-white hover:text-neutral-300",
         className,
       )}
     >
@@ -146,8 +151,10 @@ export const NavItems = ({ items, className, onItemClick, visible }: NavItemsPro
           onMouseEnter={() => setHovered(idx)}
           onClick={onItemClick}
           className={cn(
-            "relative px-4 py-2",
-            visible ? "text-neutral-600" : "text-white"
+            "relative px-4 py-2 transition-colors duration-200",
+            visible ? "text-white" : "text-white",
+            hovered === idx && visible ? "text-black" : "",
+            hovered === idx && !visible ? "text-white" : ""
           )}
           key={`link-${idx}`}
           href={item.link}
@@ -172,7 +179,7 @@ export const MobileNav = ({ children, className, visible }: MobileNavProps) => {
   return (
     <motion.div
       animate={{
-        backdropFilter: visible ? "blur(10px)" : "none",
+        backdropFilter: visible ? "blur(15px) saturate(180%)" : "none",
         boxShadow: visible
           ? "0 0 24px rgba(34, 42, 53, 0.06), 0 1px 1px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(34, 42, 53, 0.04), 0 0 4px rgba(34, 42, 53, 0.08), 0 16px 68px rgba(47, 48, 55, 0.05), 0 1px 0 rgba(255, 255, 255, 0.1) inset"
           : "none",
@@ -187,9 +194,17 @@ export const MobileNav = ({ children, className, visible }: MobileNavProps) => {
         stiffness: 200,
         damping: 50,
       }}
+      style={{
+        background: visible 
+          ? "rgba(0, 0, 0, 0.5)" 
+          : "rgba(0, 0, 0, 1)",
+        border: visible 
+          ? "1px solid rgba(255, 255, 255, 0.12)" 
+          : "none",
+        WebkitBackdropFilter: visible ? "blur(15px) saturate(180%)" : "none",
+      }}
       className={cn(
         "relative z-50 mx-auto flex w-full max-w-[calc(100vw-2rem)] flex-col items-center justify-between px-0 py-2 lg:hidden",
-        visible ? "bg-white/90" : "bg-black",
         className,
       )}
     >
@@ -248,7 +263,7 @@ export const MobileNavMenu = ({
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           className={cn(
-            "absolute inset-x-0 top-16 z-50 flex w-full flex-col items-start justify-start gap-4 rounded-lg px-4 py-8 shadow-[0_0_24px_rgba(34,_42,_53,_0.06),_0_1px_1px_rgba(0,_0,_0,_0.05),_0_0_0_1px_rgba(34,_42,_53,_0.04),_0_0_4px_rgba(34,_42,_53,_0.08),_0_16px_68px_rgba(47,_48,_55,_0.05),_0_1px_0_rgba(255,_255,_255,_0.1)_inset]",
+            "absolute inset-x-0 top-16 z-50 flex w-full flex-col items-start justify-start gap-4 rounded-lg px-4 py-8 shadow-[0_0_24px_rgba(34,42,53,0.06),0_1px_1px_rgba(0,0,0,0.05),0_0_0_1px_rgba(34,42,53,0.04),0_0_4px_rgba(34,42,53,0.08),0_16px_68px_rgba(47,48,55,0.05),0_1px_0_rgba(255,255,255,0.1)_inset]",
             visible ? "bg-white [&_a]:text-black" : "bg-neutral-900 [&_a]:text-white",
             className,
           )}
@@ -262,18 +277,18 @@ export const MobileNavMenu = ({
 
 export const MobileNavToggle = ({
   isOpen,
-  onClick,
+  onClickAction,
   visible,
 }: {
   isOpen: boolean;
-  onClick: () => void;
+  onClickAction: () => void;
   visible?: boolean;
 }) => {
-  const iconClass = visible ? "text-black" : "text-white";
+  const iconClass = "text-white";
   return isOpen ? (
-    <IconX className={iconClass} onClick={onClick} />
+    <IconX className={iconClass} onClick={onClickAction} />
   ) : (
-    <IconMenu2 className={iconClass} onClick={onClick} />
+    <IconMenu2 className={iconClass} onClick={onClickAction} />
   );
 };
 
@@ -283,7 +298,7 @@ export const NavbarLogo = ({ visible }: { visible?: boolean }) => {
       href="#"
       className={cn(
         "relative z-20 mr-4 flex items-center space-x-2 px-2 py-1 text-sm font-normal",
-        visible ? "text-black" : "text-white"
+        "text-white"
       )}
     >
       <img
@@ -295,7 +310,7 @@ export const NavbarLogo = ({ visible }: { visible?: boolean }) => {
       />
       <span className={cn(
         "font-medium",
-        visible ? "text-black" : "text-white"
+        "text-white"
       )}>Manuel.Code</span>
     </a>
   );

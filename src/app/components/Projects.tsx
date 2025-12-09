@@ -12,6 +12,10 @@ export const HoverEffect = ({
     description: string;
     link: string;
     image?: string;
+    tags?: {
+      frontend: string[];
+      backend: string[];
+    };
   }[];
   className?: string;
 }) => {
@@ -37,7 +41,7 @@ export const HoverEffect = ({
           <AnimatePresence>
             {hoveredIndex === idx && (
               <motion.span
-                className="absolute inset-0 h-full w-full bg-neutral-200 dark:bg-slate-800/[0.8] block  rounded-3xl"
+                className="absolute inset-0 h-full w-full bg-neutral-200 block  rounded-3xl"
                 layoutId="hoverBackground"
                 initial={{ opacity: 0 }}
                 animate={{
@@ -63,6 +67,26 @@ export const HoverEffect = ({
             )}
             <CardTitle>{item.title}</CardTitle>
             <CardDescription>{item.description}</CardDescription>
+            {item.tags && (item.tags.frontend.length > 0 || item.tags.backend.length > 0) && (
+              <div className="mt-4 flex flex-wrap gap-2">
+                {item.tags.frontend.map((tag, i) => (
+                  <span
+                    key={`frontend-${i}`}
+                    className="px-2.5 py-1 text-xs font-medium bg-blue-500/10 text-blue-400 border border-blue-500/20 rounded-md"
+                  >
+                    {tag}
+                  </span>
+                ))}
+                {item.tags.backend.map((tag, i) => (
+                  <span
+                    key={`backend-${i}`}
+                    className="px-2.5 py-1 text-xs font-medium bg-green-500/10 text-green-400 border border-green-500/20 rounded-md"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            )}
           </Card>
         </a>
       ))}
@@ -80,7 +104,7 @@ export const Card = ({
   return (
     <div
       className={cn(
-        "rounded-2xl h-full w-full p-4 overflow-hidden bg-black border border-transparent dark:border-white/[0.2] group-hover:border-slate-700 relative z-20",
+        "rounded-2xl h-full w-full p-4 overflow-hidden bg-black border border-transparent dark:border-white/20 group-hover:border-slate-700 relative z-20",
         className
       )}
     >
