@@ -16,6 +16,7 @@ const Profile: React.FC = () => {
     email: "manuelalejandrosolistejada36@gmail.com", // Reemplaza el correo
     linkedinUrl: "https://www.linkedin.com/in/manuel-alejandro-69064937a/", // URL de LinkedIn (usaremos el icono de Globo como marcador o puedes usar Linkedin)
     githubUrl: "https://github.com/manuelalejandrosolistejada36-maker", // URL de GitHub
+    twitter: "https://x.com/ManuelAlej28035", // URL de Twitter (usaremos el icono de Globo como marcador o puedes usar Twitter)
     
     // Contenido de la descripción
     aboutText1: "Soy un desarrollador web apasioando por crear experiencias digitales atractivas y funcionales. Con experiencia en HTML, CSS, JavaScript y frameworks modernos como React y Next.js, me especializo en construir interfaces de usuario intuitivas y responsivas.",
@@ -98,6 +99,19 @@ const Profile: React.FC = () => {
               rel="noopener noreferrer"
             >
               @manuelalejandrosolistejada36-maker
+            </a>
+          </li>
+
+          {/* Twitter (Usamos el ícono de Globo como marcador o puedes usar Twitter) */}
+          <li className="flex items-center gap-x-2.5">
+            <Globe className="shrink-0 size-4 text-white" />
+            <a 
+              className="text-[13px] text-underline hover:text-gray-800 hover:decoration-2 focus:outline-hidden focus:decoration-2 dark:text-neutral-500 dark:hover:text-neutral-400" 
+              href={profileData.twitter}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              @ManuelAlej28035
             </a>
           </li>
 

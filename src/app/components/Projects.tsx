@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "motion/react";
-
+import { Countdown } from "./Countdown";
 import { useState } from "react";
 
 export const HoverEffect = ({
@@ -16,6 +16,8 @@ export const HoverEffect = ({
       frontend: string[];
       backend: string[];
     };
+    countdown?: boolean;
+    launchDate?: string;
   }[];
   className?: string;
 }) => {
@@ -67,6 +69,11 @@ export const HoverEffect = ({
             )}
             <CardTitle>{item.title}</CardTitle>
             <CardDescription>{item.description}</CardDescription>
+            {item.countdown && item.launchDate && (
+              <div className="mt-4">
+                <Countdown targetDate={item.launchDate} />
+              </div>
+            )}
             {item.tags && (item.tags.frontend.length > 0 || item.tags.backend.length > 0) && (
               <div className="mt-4 flex flex-wrap gap-2">
                 {item.tags.frontend.map((tag, i) => (

@@ -96,6 +96,23 @@ export const Hero = () => {
                     <Github className="w-5 h-5 group-hover:text-purple-400 transition-colors" />
                     <span className="text-sm">GitHub</span>
                   </motion.a>
+
+                  <motion.a
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    href="https://x.com/ManuelAlej28035"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 px-6 py-3 bg-neutral-800 hover:bg-neutral-700 text-white rounded-xl transition-all duration-200 group"
+                  >
+                    <svg 
+                      className="w-5 h-5 group-hover:text-purple-400 transition-colors fill-current" 
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                    </svg>
+                    <span className="text-sm">X</span>
+                  </motion.a>
                 </div>
               </div>
             </div>

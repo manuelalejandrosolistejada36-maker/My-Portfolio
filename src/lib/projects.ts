@@ -11,15 +11,17 @@ export const projects = [
     }
   },
   {
-    title: "Proximo Proyecto",
+    title: "Huellitas Felices",
     description:
-      "Estamos trabajando en un nuevo proyecto emocionante. ¡Mantente atento para más detalles!",
+      "El spa Huellitas Felices a Delivery ofrece servicios de cuidado y bienestar para mascotas, brindando baños, cortes de pelo y tratamientos especiales directamente en la comodidad del hogar de los clientes.",
     link: "",
-    image: "https://via.placeholder.com/800x480?text=Netflix",
+    image: "",
     tags: {
-      frontend: ["React"],
-      backend: []
-    }
+      frontend: ["React", "Next.js", "Tailwind CSS", "TypeScript"],
+      backend: ["Node.js"]
+    },
+    countdown: true,
+    launchDate: "2025-12-14T00:00:00"
   },
   {
     title: "Proximo Proyecto",
