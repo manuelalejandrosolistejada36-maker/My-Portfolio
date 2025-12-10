@@ -14,8 +14,8 @@ export const projects = [
     title: "Huellitas Felices",
     description:
       "El spa Huellitas Felices a Delivery ofrece servicios de cuidado y bienestar para mascotas, brindando baños, cortes de pelo y tratamientos especiales directamente en la comodidad del hogar de los clientes.",
-    link: "",
-    image: "",
+    link: "https://spahuellitasfelices.vercel.app/",
+    image: "/image/huellitasfelices.png",
     tags: {
       frontend: ["React", "Next.js", "Tailwind CSS", "TypeScript"],
       backend: ["Node.js"]

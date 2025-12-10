@@ -14,13 +14,13 @@ const testimonials: Testimonial[] = [
     id: 1,
     name: "Alejandro Tejada",
     role: "The Stylo Cave",
-    content: "Trabajar con Manuel fue una experiencia excepcional. Su nivel de atención y detalle en cada momento dentro de la pagina, su nivel de perfeccion fasino a la empresa."
+    content: "Trabajar con Manuel fue una experiencia maravillosa. Su nivel de perfeccion en cada detalle fasino a la empresa."
   },
   {
     id: 2,
     name: "Max Cartagena",
     role: "Huellitas Felices",
-    content: "La atención al detalle y el compromiso con la excelencia son incomparables. su compromiso y su puntualidad a destacar, obteniendo el proyecto en menos tiempo del tiempo acordado."
+    content: "La atención al detalle y su puntualidad a la entrega fue mucho a destacar. En pocas palabras, un profesional en toda la extensión de la palabra."
   },
   {
     id: 3,
@@ -51,7 +51,7 @@ const Testimonials = () => {
   useEffect(() => {
     const timer = setInterval(() => {
       paginate(1);
-    }, 6000);
+    }, 10000);
 
     return () => clearInterval(timer);
   }, [currentIndex]);

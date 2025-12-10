@@ -1,5 +1,6 @@
 "use client";
 import Testimonials from "../app/components/Testimonials";
+import { Prices } from "../app/components/Prices";
 import React from "react";
 import { HoverEffect } from "../app/components/Projects";
 import { NavbarComponent } from "../app/components/Navbar";
@@ -35,6 +36,9 @@ export default function Home() {
 
       {/* Sección de Testimonios */}
       <Testimonials />
+
+      {/* Sección de Precios */}
+      <Prices />
 
       {/* Footer */}
       <footer className="w-full py-6 bg-black text-neutral-400 border-t border-neutral-800">

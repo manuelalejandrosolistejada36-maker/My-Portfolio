@@ -12,10 +12,7 @@ export const TimelineSection = () => {
       content: (
         <div>
           <p className="mb-8 text-xs font-normal text-neutral-400 md:text-sm dark:text-neutral-200">
-            A comienzos y a mediados comence el desarrolo de una pagina web basado en una Barberia "The Stylo Cave" dandole funcionalidad y un diseño moderno y atractivo, de igual manera pude crear mi portafolio personal para mostrar mis proyectos y habilidades como desarrollador web.
-          </p>
-          <p className="mb-8 text-xs font-normal text-neutral-400 md:text-sm dark:text-neutral-200">
-            A base de los cursos adquiridos en Udemy, pude desarrollar proyectos que me permitieron aplicar mis conocimientos y habilidades en la creación de sitios web atractivos y funcionales.
+            A inicios y mediados del año desarrollé una página web para la barbería “The Stylo Cave”, implementando un diseño moderno, funcional y orientado a la experiencia del usuario. Además, creé mi portafolio personal para presentar mis proyectos y mi creatividad y compromiso como desarrollador web.
           </p>
           <div className="grid grid-cols-2 gap-4">
             <img
@@ -35,11 +32,11 @@ export const TimelineSection = () => {
               className="h-20 w-full rounded-lg object-cover cursor-pointer hover:scale-105 transition-transform duration-300 shadow-[0_0_24px_rgba(34,42,53,0.06),0_1px_1px_rgba(0,0,0,0.05),0_0_0_1px_rgba(34,42,53,0.04),0_0_4px_rgba(34,42,53,0.08),0_16px_68px_rgba(47,48,55,0.05),0_1px_0_rgba(255,255,255,0.1)_inset] md:h-44 lg:h-60"
             />
             <img
-              src="/image/the-stylo-cave2.png"
-              alt="The Stylo Cave detail"
+              src="/image/huellitasfelices.png"
+              alt="Huellitas Felices website"
               width={500}
               height={500}
-              onClick={() => setSelectedImage("/image/the-stylo-cave2.png")}
+              onClick={() => setSelectedImage("/image/huellitasfelices.png")}
               className="h-20 w-full rounded-lg object-cover cursor-pointer hover:scale-105 transition-transform duration-300 shadow-[0_0_24px_rgba(34,42,53,0.06),0_1px_1px_rgba(0,0,0,0.05),0_0_0_1px_rgba(34,42,53,0.04),0_0_4px_rgba(34,42,53,0.08),0_16px_68px_rgba(47,48,55,0.05),0_1px_0_rgba(255,255,255,0.1)_inset] md:h-44 lg:h-60"
             />
             <img
@@ -58,43 +55,42 @@ export const TimelineSection = () => {
       title: "Mis Cursos Completados",
       content: (
         <div>
-          <p className="mb-4 text-xs font-normal text-neutral-400 md:text-sm dark:text-neutral-200">
-            Mis cursos completados en Udemy incluyen:
-          </p>
-          <div className="mb-8">
-            <div className="flex items-center gap-2 text-xs text-neutral-400 md:text-sm dark:text-neutral-200">
-              ✅ La creación y diseño de páginas web modernas con HTML y CSS
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Curso JavaScript */}
+            <div className="relative group overflow-hidden rounded-xl border border-neutral-800 bg-neutral-900/50 backdrop-blur-sm">
+              <img
+                src="/image/javascript.jpg"
+                alt="JavaScript course"
+                width={500}
+                height={500}
+                onClick={() => setSelectedImage("/image/javascript.jpg")}
+                className="w-full h-48 object-cover cursor-pointer transition-transform duration-300 group-hover:scale-105"
+              />
+              <div className="p-4">
+                <h3 className="text-white font-semibold text-lg mb-2">JavaScript Completo</h3>
+                <p className="text-neutral-400 text-sm leading-relaxed">
+                  Dominé fundamentos de JS, ES6+, DOM manipulation, programación asíncrona, fetch API y desarrollo de aplicaciones interactivas modernas.
+                </p>
+              </div>
             </div>
-            <div className="flex items-center gap-2 text-xs text-neutral-400 md:text-sm dark:text-neutral-200">
-              ✅ El funcionamiento de JavaScript para agregar interactividad
+
+            {/* Curso HTML & CSS */}
+            <div className="relative group overflow-hidden rounded-xl border border-neutral-800 bg-neutral-900/50 backdrop-blur-sm">
+              <img
+                src="/image/html&css.jpg"
+                alt="HTML & CSS course"
+                width={500}
+                height={500}
+                onClick={() => setSelectedImage("/image/html&css.jpg")}
+                className="w-full h-48 object-cover cursor-pointer transition-transform duration-300 group-hover:scale-105"
+              />
+              <div className="p-4">
+                <h3 className="text-white font-semibold text-lg mb-2">HTML & CSS Avanzado</h3>
+                <p className="text-neutral-400 text-sm leading-relaxed">
+                  Aprendí estructura semántica, Flexbox, Grid, animaciones, responsive design y mejores prácticas para interfaces modernas y accesibles.
+                </p>
+              </div>
             </div>
-            <div className="flex items-center gap-2 text-xs text-neutral-400 md:text-sm dark:text-neutral-200">
-              ✅ Introducción a Node.js y desarrollo de aplicaciones con React y Next.js
-            </div>
-            <div className="flex items-center gap-2 text-xs text-neutral-400 md:text-sm dark:text-neutral-200">
-              ✅ La personalizacion de interfaces utilizando Tailwind CSS
-            </div>
-            <div className="flex items-center gap-2 text-xs text-neutral-400 md:text-sm dark:text-neutral-200">
-              ✅ Despliegue y optimización de aplicaciones web para un rendimiento óptimo
-            </div>
-          </div>
-          <div className="grid grid-cols-2 gap-4">
-            <img
-              src="/image/javascript.jpg"
-              alt="JavaScript course"
-              width={500}
-              height={500}
-              onClick={() => setSelectedImage("/image/javascript.jpg")}
-              className="h-20 w-full rounded-lg object-cover cursor-pointer hover:scale-105 transition-transform duration-300 shadow-[0_0_24px_rgba(34,42,53,0.06),0_1px_1px_rgba(0,0,0,0.05),0_0_0_1px_rgba(34,42,53,0.04),0_0_4px_rgba(34,42,53,0.08),0_16px_68px_rgba(47,48,55,0.05),0_1px_0_rgba(255,255,255,0.1)_inset] md:h-44 lg:h-60"
-            />
-            <img
-              src="/image/html&css.jpg"
-              alt="HTML & CSS course"
-              width={500}
-              height={500}
-              onClick={() => setSelectedImage("/image/html&css.jpg")}
-              className="h-20 w-full rounded-lg object-cover cursor-pointer hover:scale-105 transition-transform duration-300 shadow-[0_0_24px_rgba(34,42,53,0.06),0_1px_1px_rgba(0,0,0,0.05),0_0_0_1px_rgba(34,42,53,0.04),0_0_4px_rgba(34,42,53,0.08),0_16px_68px_rgba(47,48,55,0.05),0_1px_0_rgba(255,255,255,0.1)_inset] md:h-44 lg:h-60"
-            />
           </div>
         </div>
       ),
@@ -103,7 +99,7 @@ export const TimelineSection = () => {
 
   return (
     <>
-      <section id="features" className="w-full font-bold px-0 py-15 md:px-35 flex flex-col items-center justify-center">
+      <section id="features" className="w-full font-bold px-0 py-4 md:py-15 md:px-35 flex flex-col items-center justify-center">
         <div className="relative w-full overflow-clip">
           <Timeline
             data={data}

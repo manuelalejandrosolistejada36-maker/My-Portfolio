@@ -43,7 +43,7 @@ export const Timeline = ({ data, title = "", description = "" }: TimelineProps) 
       className="w-full bg-black font-sans md:px-10"
       ref={containerRef}
     >
-      <div className="w-full mx-auto py-20 px-4 md:px-8 lg:px-10 flex flex-col items-center text-center">
+      <div className="w-full mx-auto py-6 md:py-20 px-4 md:px-8 lg:px-10 flex flex-col items-center text-center">
         <h2 className="text-lg md:text-4xl mb-4 text-white">
           {title}
         </h2>
@@ -52,11 +52,11 @@ export const Timeline = ({ data, title = "", description = "" }: TimelineProps) 
         </p>
       </div>
 
-      <div ref={ref} className="relative w-full mx-auto pb-20">
+      <div ref={ref} className="relative w-full mx-auto pb-8 md:pb-20">
         {data.map((item, index) => (
           <div
             key={index}
-            className="flex justify-start pt-10 md:pt-10 md:gap-10"
+            className="flex justify-start pt-6 md:pt-10 md:gap-10"
           >
             <div className="sticky flex flex-col md:flex-row z-40 items-center top-40 self-start max-w-xs lg:max-w-sm md:w-full">
               <div className="h-10 absolute left-3 md:left-3 w-10 rounded-full bg-black flex items-center justify-center">

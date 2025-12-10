@@ -10,12 +10,12 @@ export const Hero = () => {
     email: "manuelalejandrosolistejada36@gmail.com",
     linkedinUrl: "https://www.linkedin.com/in/manuel-alejandro-69064937a/",
     githubUrl: "https://github.com/manuelalejandrosolistejada36-maker",
-    aboutText: "Desarrollador web apasionado por crear experiencias digitales atractivas y funcionales. Especializado en desarrollo front-end con React, Next.js y Tailwind CSS.",
+    aboutText: "Desarrollador web apasionado por crear experiencias digitales atractivas y funcionales. Especializado en desarrollo front-end y back-end.",
     imageUrl: "https://images.unsplash.com/photo-1510706019500-d23a509eecd4?q=80&w=2667&auto=format&fit=facearea&facepad=3&w=320&h=320&q=80&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   };
 
   return (
-    <section className="flex flex-col items-center justify-center min-h-screen py-20 px-4">
+    <section className="flex flex-col items-center justify-center py-10 md:min-h-screen md:py-20 px-4">
       <div className="max-w-5xl w-full">
         {/* Tarjeta de perfil elegante */}
         <motion.div
@@ -54,7 +54,7 @@ export const Hero = () => {
                 </div>
                 
                 <p className="text-neutral-400 text-base md:text-lg mb-4">
-                  Software Engineer & Frontend Developer
+                  Developer Web 
                 </p>
                 
                 <p className="text-neutral-400 text-sm mb-6 max-w-xl">
