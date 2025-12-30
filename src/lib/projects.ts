@@ -14,7 +14,7 @@ export const projects = [
     title: "Huellitas Felices",
     description:
       "El spa Huellitas Felices a Delivery ofrece servicios de cuidado y bienestar para mascotas, brindando baños, cortes de pelo y tratamientos especiales directamente en la comodidad del hogar de los clientes.",
-    link: "https://spahuellitasfelices.vercel.app/",
+    link: "https://spahuellitasfelices.shop/",
     image: "/image/huellitasfelices.png",
     tags: {
       frontend: ["React", "Next.js", "Tailwind CSS", "TypeScript"],
@@ -24,15 +24,17 @@ export const projects = [
     launchDate: "2025-12-14T00:00:00"
   },
   {
-    title: "Proximo Proyecto",
+    title: "Kash",
     description:
-      "Estamos trabajando en un nuevo proyecto emocionante. ¡Mantente atento para más detalles!",
+      "Kash nació de una idea simple: el dinero no debería ser una fuente de estrés, sino una herramienta de libertad. No es solo un registro de números; es un guardián digital diseñado para quienes viven a un ritmo acelerado y necesitan claridad inmediata.",
     link: "",
     image: "https://via.placeholder.com/800x480?text=Google",
     tags: {
-      frontend: ["Next.js"],
-      backend: []
-    }
+      frontend: ["Next.js", "Tailwind CSS", "TypeScript", "React"],
+      backend: ["Node.js"]
+    },
+    countdown: true,
+    launchDate: "2026-02-01T00:00:00"
   },
   {
     title: "Proximo Proyecto",
