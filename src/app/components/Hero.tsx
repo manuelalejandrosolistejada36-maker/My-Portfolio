@@ -37,7 +37,7 @@ export const Hero = () => {
                 className="shrink-0"
               >
                 <img
-                  src="/image/profile.jpg"
+                  src="/image/perfil.jpeg"
                   alt="Profile"
                   className="w-32 h-32 md:w-40 md:h-40 rounded-2xl object-cover ring-4 ring-neutral-800 shadow-xl"
                 />
