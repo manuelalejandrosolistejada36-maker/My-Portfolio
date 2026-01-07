@@ -584,3 +584,5 @@ export function Prices() {
     </section>
   );
 }
+
+export default Prices;

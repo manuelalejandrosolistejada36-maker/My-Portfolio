@@ -13,6 +13,7 @@ const textderechos = "© 2025 Manuel.Code. Todos los derechos reservados.";
 // --- Componente de Página Raíz (Exportación por defecto) ---
 
 export default function Home() {
+  const showPrices = false; // Cambia a true para mostrar la sección de precios
   return (
     <div className="relative min-h-screen w-full bg-black text-white">
       {/* 1. Navbar */}
@@ -38,7 +39,7 @@ export default function Home() {
       <Testimonials />
 
       {/* Sección de Precios */}
-      <Prices />
+      {showPrices && <Prices />}
 
       {/* Footer */}
       <footer className="w-full py-6 bg-black text-neutral-400 border-t border-neutral-800">
