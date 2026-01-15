@@ -24,10 +24,10 @@ export const projects = [
     launchDate: "2025-12-14T00:00:00"
   },
   {
-    title: "Kash",
+    title: "Naroa",
     description:
-      "Kash nació de una idea simple: el dinero no debería ser una fuente de estrés, sino una herramienta de libertad. No es solo un registro de números; es un guardián digital diseñado para quienes viven a un ritmo acelerado y necesitan claridad inmediata.",
-    link: "",
+      "Naroa nació de una idea simple: estar a la moda, no es pecado, sino un estilo con el que se vive con confianza y autenticidad.",
+    link: "https://naroa.vercel.app/",
     image: "https://via.placeholder.com/800x480?text=Google",
     tags: {
       frontend: ["Next.js", "Tailwind CSS", "TypeScript", "React"],
