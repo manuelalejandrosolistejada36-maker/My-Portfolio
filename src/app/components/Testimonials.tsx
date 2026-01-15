@@ -25,7 +25,7 @@ const testimonials: Testimonial[] = [
   {
     id: 3,
     name: "Roberto Silva",
-    role: "Kash App",
+    role: "Naroa",
     content: "Una habilidad única para entender las necesidades del cliente y traducirlas en código. Su expertise nos ayudó a lanzar nuestro producto antes de lo esperado."
   },
   {
