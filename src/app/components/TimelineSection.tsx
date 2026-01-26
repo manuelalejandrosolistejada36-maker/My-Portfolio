@@ -3,95 +3,203 @@ import React, { useState } from "react";
 import { Timeline } from "./Timeline";
 import { motion, AnimatePresence } from "motion/react";
 
+interface ImageGalleryProps {
+  images: { src: string; alt: string }[];
+  onImageClick: (src: string) => void;
+}
+
+const ImageGallery: React.FC<ImageGalleryProps> = ({ images, onImageClick }) => {
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  return (
+    <div className="mt-6">
+      <button
+        onClick={() => setIsExpanded(!isExpanded)}
+        className="flex items-center gap-2 text-sm font-medium text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-200 transition-colors mb-4 group"
+      >
+        <span className="tracking-tight">{isExpanded ? "Ocultar" : "Ver"} galería</span>
+        <motion.div
+          animate={{ rotate: isExpanded ? 180 : 0 }}
+          transition={{ duration: 0.2 }}
+        >
+          <svg
+            className="w-4 h-4"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M19 9l-7 7-7-7"
+            />
+          </svg>
+        </motion.div>
+      </button>
+
+      <AnimatePresence>
+        {isExpanded && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
+            className="overflow-hidden"
+          >
+            <div className="grid grid-cols-2 gap-3">
+              {images.map((image, idx) => (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: idx * 0.05 }}
+                  onClick={() => onImageClick(image.src)}
+                  className="group relative aspect-video overflow-hidden rounded-2xl bg-neutral-100 dark:bg-neutral-900/30 cursor-pointer"
+                >
+                  <img
+                    src={image.src}
+                    alt={image.alt}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+};
+
+interface CourseCardProps {
+  image: string;
+  title: string;
+  description: string;
+  onImageClick: (src: string) => void;
+}
+
+const CourseCard: React.FC<CourseCardProps> = ({ image, title, description, onImageClick }) => {
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  return (
+    <div className="group">
+      <button
+        onClick={() => setIsExpanded(!isExpanded)}
+        className="w-full text-left"
+      >
+        <div className="flex items-center justify-between py-4 border-b border-neutral-200 dark:border-neutral-800">
+          <h3 className="text-base font-medium text-neutral-900 dark:text-neutral-100 tracking-tight">
+            {title}
+          </h3>
+          <motion.div
+            animate={{ rotate: isExpanded ? 180 : 0 }}
+            transition={{ duration: 0.2 }}
+          >
+            <svg
+              className="w-5 h-5 text-neutral-500"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M19 9l-7 7-7-7"
+              />
+            </svg>
+          </motion.div>
+        </div>
+      </button>
+
+      <AnimatePresence>
+        {isExpanded && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
+            className="overflow-hidden"
+          >
+            <div className="py-4 space-y-4">
+              <div
+                onClick={() => onImageClick(image)}
+                className="relative aspect-video overflow-hidden rounded-2xl bg-neutral-100 dark:bg-neutral-900/30 cursor-pointer group/img"
+              >
+                <img
+                  src={image}
+                  alt={title}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover/img:scale-105"
+                />
+                <div className="absolute inset-0 bg-black/0 group-hover/img:bg-black/10 transition-colors duration-300" />
+              </div>
+              <p className="text-sm leading-relaxed text-neutral-600 dark:text-neutral-400">
+                {description}
+              </p>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+};
+
 export const TimelineSection = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   
   const data = [
     {
-      title: "2025",
+      title: "2026",
       content: (
         <div>
-          <p className="mb-8 text-xs font-normal text-neutral-400 md:text-sm dark:text-neutral-200">
-            A inicios y mediados del año desarrollé una página web para la barbería “The Stylo Cave”, implementando un diseño moderno, funcional y orientado a la experiencia del usuario. Además, creé mi portafolio personal para presentar mis proyectos y mi creatividad y compromiso como desarrollador web.
+          <p className="text-sm leading-relaxed text-neutral-600 dark:text-neutral-400 max-w-2xl">
+            A inicios de enero estuvimos creando la aplicación "Naroa" una tienda virtual de ropa online, el trabajo incluyó diseño UI/UX, desarrollo frontend con Next.js y Tailwind CSS, integración de pasarelas de pago y optimización para SEO y rendimiento.
           </p>
-          <div className="grid grid-cols-2 gap-4">
-            <img
-              src="/image/the-stylo-cave.png"
-              alt="The Stylo Cave website"
-              width={500}
-              height={500}
-              onClick={() => setSelectedImage("/image/the-stylo-cave.png")}
-              className="h-20 w-full rounded-lg object-cover cursor-pointer hover:scale-105 transition-transform duration-300 shadow-[0_0_24px_rgba(34,42,53,0.06),0_1px_1px_rgba(0,0,0,0.05),0_0_0_1px_rgba(34,42,53,0.04),0_0_4px_rgba(34,42,53,0.08),0_16px_68px_rgba(47,48,55,0.05),0_1px_0_rgba(255,255,255,0.1)_inset] md:h-44 lg:h-60"
-            />
-            <img
-              src="/image/manuel-code-2.png"
-              alt="Manuel Code portfolio"
-              width={500}
-              height={500}
-              onClick={() => setSelectedImage("/image/manuel-code-2.png")}
-              className="h-20 w-full rounded-lg object-cover cursor-pointer hover:scale-105 transition-transform duration-300 shadow-[0_0_24px_rgba(34,42,53,0.06),0_1px_1px_rgba(0,0,0,0.05),0_0_0_1px_rgba(34,42,53,0.04),0_0_4px_rgba(34,42,53,0.08),0_16px_68px_rgba(47,48,55,0.05),0_1px_0_rgba(255,255,255,0.1)_inset] md:h-44 lg:h-60"
-            />
-            <img
-              src="/image/huellitasfelices.png"
-              alt="Huellitas Felices website"
-              width={500}
-              height={500}
-              onClick={() => setSelectedImage("/image/huellitasfelices.png")}
-              className="h-20 w-full rounded-lg object-cover cursor-pointer hover:scale-105 transition-transform duration-300 shadow-[0_0_24px_rgba(34,42,53,0.06),0_1px_1px_rgba(0,0,0,0.05),0_0_0_1px_rgba(34,42,53,0.04),0_0_4px_rgba(34,42,53,0.08),0_16px_68px_rgba(47,48,55,0.05),0_1px_0_rgba(255,255,255,0.1)_inset] md:h-44 lg:h-60"
-            />
-            <img
-              src="https://assets.aceternity.com/cards.png"
-              alt="Project cards"
-              width={500}
-              height={500}
-              onClick={() => setSelectedImage("https://assets.aceternity.com/cards.png")}
-              className="h-20 w-full rounded-lg object-cover cursor-pointer hover:scale-105 transition-transform duration-300 shadow-[0_0_24px_rgba(34,42,53,0.06),0_1px_1px_rgba(0,0,0,0.05),0_0_0_1px_rgba(34,42,53,0.04),0_0_4px_rgba(34,42,53,0.08),0_16px_68px_rgba(47,48,55,0.05),0_1px_0_rgba(255,255,255,0.1)_inset] md:h-44 lg:h-60"
-            />
-          </div>
+          <ImageGallery
+            images={[
+              { src: "/image/naroa.png", alt: "Naroa" },
+            ]}
+            onImageClick={setSelectedImage}
+          />
         </div>
       ),
     },
     {
-      title: "Mis Cursos Completados",
+      title: "2025",
       content: (
         <div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* Curso JavaScript */}
-            <div className="relative group overflow-hidden rounded-xl border border-neutral-800 bg-neutral-900/50 backdrop-blur-sm">
-              <img
-                src="/image/javascript.jpg"
-                alt="JavaScript course"
-                width={500}
-                height={500}
-                onClick={() => setSelectedImage("/image/javascript.jpg")}
-                className="w-full h-48 object-cover cursor-pointer transition-transform duration-300 group-hover:scale-105"
-              />
-              <div className="p-4">
-                <h3 className="text-white font-semibold text-lg mb-2">JavaScript Completo</h3>
-                <p className="text-neutral-400 text-sm leading-relaxed">
-                  Dominé fundamentos de JS, ES6+, DOM manipulation, programación asíncrona, fetch API y desarrollo de aplicaciones interactivas modernas.
-                </p>
-              </div>
-            </div>
-
-            {/* Curso HTML & CSS */}
-            <div className="relative group overflow-hidden rounded-xl border border-neutral-800 bg-neutral-900/50 backdrop-blur-sm">
-              <img
-                src="/image/html&css.jpg"
-                alt="HTML & CSS course"
-                width={500}
-                height={500}
-                onClick={() => setSelectedImage("/image/html&css.jpg")}
-                className="w-full h-48 object-cover cursor-pointer transition-transform duration-300 group-hover:scale-105"
-              />
-              <div className="p-4">
-                <h3 className="text-white font-semibold text-lg mb-2">HTML & CSS Avanzado</h3>
-                <p className="text-neutral-400 text-sm leading-relaxed">
-                  Aprendí estructura semántica, Flexbox, Grid, animaciones, responsive design y mejores prácticas para interfaces modernas y accesibles.
-                </p>
-              </div>
-            </div>
-          </div>
+          <p className="text-sm leading-relaxed text-neutral-600 dark:text-neutral-400 max-w-2xl">
+            A inicios y mediados del año desarrollé una página web para la barbería "The Stylo Cave", implementando un diseño moderno, funcional y orientado a la experiencia del usuario. Además, creé mi portafolio personal para presentar mis proyectos y mi creatividad y compromiso como desarrollador web.
+          </p>
+          <ImageGallery
+            images={[
+              { src: "/image/the-stylo-cave.png", alt: "The Stylo Cave" },
+              { src: "/image/manuel-code-2.png", alt: "Manuel Code portfolio" },
+              { src: "/image/huellitasfelices.png", alt: "Huellitas Felices" },
+            ]}
+            onImageClick={setSelectedImage}
+          />
+        </div>
+      ),
+    },
+    {
+      title: "Cursos Completados",
+      content: (
+        <div className="space-y-0">
+          <CourseCard
+            image="/image/javascript.jpg"
+            title="JavaScript Completo"
+            description="Dominé fundamentos de JS, ES6+, DOM manipulation, programación asíncrona, fetch API y desarrollo de aplicaciones interactivas modernas."
+            onImageClick={setSelectedImage}
+          />
+          <CourseCard
+            image="/image/html&css.jpg"
+            title="HTML & CSS Avanzado"
+            description="Aprendí estructura semántica, Flexbox, Grid, animaciones, responsive design y mejores prácticas para interfaces modernas y accesibles."
+            onImageClick={setSelectedImage}
+          />
         </div>
       ),
     },
@@ -99,8 +207,8 @@ export const TimelineSection = () => {
 
   return (
     <>
-      <section id="features" className="w-full font-bold px-0 py-4 md:py-15 md:px-35 flex flex-col items-center justify-center">
-        <div className="relative w-full overflow-clip">
+      <section id="features" className="w-full px-4 py-16 md:py-24 md:px-8 flex flex-col items-center justify-center">
+        <div className="relative w-full max-w-5xl">
           <Timeline
             data={data}
             title="Mi Trayectoria como Desarrollador."
@@ -108,7 +216,7 @@ export const TimelineSection = () => {
         </div>
       </section>
 
-      {/* Modal para imagen ampliada */}
+      {/* Modal minimalista estilo iOS */}
       <AnimatePresence>
         {selectedImage && (
           <motion.div
@@ -116,27 +224,39 @@ export const TimelineSection = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setSelectedImage(null)}
-            className="fixed inset-0 z-100 flex items-center justify-center bg-black/90 backdrop-blur-sm p-4 cursor-pointer"
+            className="fixed inset-0 z-100 flex items-center justify-center bg-black/80 backdrop-blur-xl p-4 cursor-pointer"
           >
             <motion.div
-              initial={{ scale: 0.8, opacity: 0 }}
+              initial={{ scale: 0.95, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.8, opacity: 0 }}
-              transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              exit={{ scale: 0.95, opacity: 0 }}
+              transition={{ duration: 0.2, ease: [0.4, 0, 0.2, 1] }}
               onClick={(e) => e.stopPropagation()}
-              className="relative max-w-7xl max-h-[90vh] cursor-default"
+              className="relative max-w-6xl max-h-[85vh] cursor-default"
             >
               <button
                 onClick={() => setSelectedImage(null)}
-                className="absolute -top-10 right-0 text-white hover:text-gray-300 transition-colors text-2xl font-bold z-10"
+                className="absolute -top-12 right-0 w-8 h-8 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors duration-200"
                 aria-label="Cerrar"
               >
-                ✕
+                <svg
+                  className="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
               </button>
               <img
                 src={selectedImage}
-                alt="Imagen ampliada"
-                className="w-full h-full object-contain rounded-lg shadow-2xl"
+                alt="Vista ampliada"
+                className="w-full h-full object-contain rounded-3xl shadow-2xl"
               />
             </motion.div>
           </motion.div>

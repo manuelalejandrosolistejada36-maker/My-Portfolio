@@ -28,7 +28,7 @@ export const projects = [
     description:
       "Naroa nació de una idea simple: estar a la moda, no es pecado, sino un estilo con el que se vive con confianza y autenticidad.",
     link: "https://naroa.vercel.app/",
-    image: "https://via.placeholder.com/800x480?text=Google",
+    image: "/image/naroa.png",
     tags: {
       frontend: ["Next.js", "Tailwind CSS", "TypeScript", "React"],
       backend: ["Node.js"]

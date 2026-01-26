@@ -25,8 +25,22 @@ export const Timeline = ({ data, title = "", description = "" }: TimelineProps) 
 
   useEffect(() => {
     if (ref.current) {
-      const rect = ref.current.getBoundingClientRect();
-      setHeight(rect.height);
+      const resizeObserver = new ResizeObserver((entries) => {
+        // Obtenemos la altura actualizada del contenedor
+        for (const entry of entries) {
+           // Usamos getBoundingClientRect para mayor precisión incluyendo bordes
+           if (ref.current) {
+             const rect = ref.current.getBoundingClientRect();
+             // Ajustar altura restando el padding inferior para evitar que la línea invada el siguiente componente
+             // Estimación de pb-20 (80px) a md:pb-32 (128px). Restamos un valor seguro.
+             // O mejor, obtenemos el padding computado.
+             setHeight(rect.height);
+           }
+        }
+      });
+      
+      resizeObserver.observe(ref.current);
+      return () => resizeObserver.disconnect();
     }
   }, [ref]);
 
@@ -52,11 +66,11 @@ export const Timeline = ({ data, title = "", description = "" }: TimelineProps) 
         </p>
       </div>
 
-      <div ref={ref} className="relative w-full mx-auto pb-8 md:pb-20">
+      <div ref={ref} className="relative w-full mx-auto pb-20 md:pb-32">
         {data.map((item, index) => (
           <div
             key={index}
-            className="flex justify-start pt-6 md:pt-10 md:gap-10"
+            className="flex justify-start pt-10 md:pt-20 md:gap-10"
           >
             <div className="sticky flex flex-col md:flex-row z-40 items-center top-40 self-start max-w-xs lg:max-w-sm md:w-full">
               <div className="h-10 absolute left-3 md:left-3 w-10 rounded-full bg-black flex items-center justify-center">
@@ -77,7 +91,7 @@ export const Timeline = ({ data, title = "", description = "" }: TimelineProps) 
         ))}
         <div
           style={{
-            height: height + "px",
+            height: Math.max(0, height - 100) + "px",
           }}
           className="absolute md:left-8 left-8 top-0 overflow-hidden w-0.5 bg-[linear-gradient(to_bottom,var(--tw-gradient-stops))] from-transparent via-neutral-700 to-transparent to-99%  mask-[linear-gradient(to_bottom,transparent_0%,black_10%,black_90%,transparent_100%)] "
         >
